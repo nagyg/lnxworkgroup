@@ -11,22 +11,7 @@ local in=`realpath .`
 local archive_dir="${WGPATH}/"
 local ext=tar.gz
 
-if [ "$#" == 0 ]; then
-	for dir in "${archive_dir}"* ; do
-		local archive=${dir##${archive_dir}}
-		tar.tmp
-	done
-else
-	for arg in "${@}"; do
-		local archive=$arg
-		local dir=${WGPATH}/$arg
-		tar.tmp
-	done
-fi
-builtin cd "$in"
-}
-
-function tar.tmp {
+function repo.tar {
 mkdir -p ${WGPATH}/tmp
 if [ -f "$dir/.repoignore" ]; then
 	builtin cd "$dir"
@@ -39,6 +24,21 @@ if [ -f "$dir/.repoignore" ]; then
 else
 	echo -e "[${dir}]	>> .repoignore file not found"
 fi
+}
+
+if [ "$#" == 0 ]; then
+	for dir in "${archive_dir}"* ; do
+		local archive=${dir##${archive_dir}}
+		repo.tar
+	done
+else
+	for arg in "${@}"; do
+		local archive=$arg
+		local dir=${WGPATH}/$arg
+		repo.tar
+	done
+fi
+builtin cd "$in"
 }
 
 update() {
