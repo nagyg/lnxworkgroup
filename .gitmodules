@@ -1,0 +1,8 @@
+[submodule "sidefx/HSITE/mlnLib"]
+	path = sidefx/HSITE/mlnLib
+	url = https://github.com/nagyg/mlnLib.git
+	branch = master
+[submodule "sidefx/HSITE/qLib"]
+	path = sidefx/HSITE/qLib
+	url = https://github.com/qLab/qLib.git
+	branch = master

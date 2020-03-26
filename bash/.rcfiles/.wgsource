@@ -1,0 +1,21 @@
+#!/bin/bash
+#------------------------ Please do not edit this section -------------------------////
+export WGPATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+
+export JOB= # not in use
+
+AVERSION= # not in use
+HVERSION= # not in use
+#------------------------ ARNOLD --------------------------------------------------////
+export solidangle_LICENSE= # not in use
+
+#------------------------ HOUDINI -----------------------////
+export HDIR="/opt"
+expreditor=false
+
+#------------------------ SOURCE ------------------------////
+source "${WGPATH}/bash/source/main.sh"
+#source "${WGPATH}/bash/source/ffmpeg.sh"
+#source "${WGPATH}/bash/source/arnold.sh"
+#source "${WGPATH}/bash/source/houdini.sh"
+#source "${WGPATH}/bash/source/project.sh"

@@ -1,0 +1,8 @@
+ffmpeg
+project
+solidangle
+tmp
+
+# user .wgsource file
+.wgsource
+!bash/.rcfiles/.wgsource
