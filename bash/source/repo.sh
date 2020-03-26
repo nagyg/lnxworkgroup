@@ -54,7 +54,7 @@ else
 
 			local path=`realpath "${WGPATH}/${i}"`
 
-			wget $url/${i}.${ext} -P "${path}"
+			wget -N $url/${i}.${ext} -P "${path}"
 			tar -xf ${path}/${i}.${ext} -C ${path} && rm ${path}/${i}.${ext}
 				if [ $? -eq 0 ]; then
 					echo -e "[${green}$url/${i}.${ext}${nc}]	${green}>> ${i}${nc}\n"

@@ -193,7 +193,7 @@ else
 
 	hsetenv &> /dev/null
 
-	local path="$(cygpath -w "${htoa_path}")"
+	local path=${htoa_path}
 	export HOUDINI_PATH="$path;${HOUDINI_PATH}"
 
 	pathremove "${ARNOLD_BINDIR}"
