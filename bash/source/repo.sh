@@ -2,39 +2,42 @@
 #--------------------------------------------------------------------------------------------------////
 # URL repo:
 #--------------------------------------------------------------------------------------------------////
+
+export url="http://nagyg.ddns.net:17600/workgroup/lnx"
+
 repo.archive() {
-local d
+local dir arg
 local in=`realpath .`
 local archive_dir="${WGPATH}/"
-
-function tar.archive {
-tar -zcvf "${WGPATH}/tmp/${archive}.tar.gz" -X .repoignore .
-	if [ $? -eq 0 ]; then
-		echo -e "[${green}${WGPATH}/tmp/${archive}.zip${nc}]\n"
-	else
-		echo -e "[${red}${WGPATH}/tmp/${archive}.zip${nc}]\n"
-	fi
-}
+local ext=tar.gz
 
 if [ "$#" == 0 ]; then
-	for d in "${archive_dir}"* ; do
-		local archive=${d##${archive_dir}}
-		if [ -f "$d/.repoignore" ]; then
-			builtin cd "$d"
-			tar.archive
-		fi
+	for dir in "${archive_dir}"* ; do
+		local archive=${dir##${archive_dir}}
+		tar.tmp
 	done
 else
-	for d in "${@}"; do
-		local archive=$d
-		if [ -f "${WGPATH}/$d/.repoignore" ]; then
-			builtin cd "${WGPATH}/$d"
-			tar.archive
-		else
-			echo -e "[${red}${WGPATH}/$d${nc}]	>> .repoignore file not found"
-		fi
+	for arg in "${@}"; do
+		local archive=$arg
+		local dir=${WGPATH}/$arg
+		tar.tmp
 	done
+fi
 builtin cd "$in"
+}
+
+function tar.tmp {
+mkdir -p ${WGPATH}/tmp
+if [ -f "$dir/.repoignore" ]; then
+	builtin cd "$dir"
+	tar -zcvf "${WGPATH}/tmp/${archive}.tar.gz" -X "$dir/.repoignore" .
+	if [ $? -eq 0 ]; then
+		echo -e "[${green}${WGPATH}/tmp/${archive}.${ext}${nc}]\n"
+	else
+		echo -e "[${red}${WGPATH}/tmp/${archive}.${ext}${nc}]\n"
+	fi
+else
+	echo -e "[${dir}]	>> .repoignore file not found"
 fi
 }
 
@@ -43,33 +46,25 @@ if [ "$#" == 0 ]; then
 	echo "bash: [$#]: illegal number of parameters"
 else
 	local i
-	local in=`realpath .`
 	local ext=tar.gz
 
-	local url0="http://nagyg.ddns.net:17600/workgroup/lnx"
-
 	for i in "${@}"; do
-		wget  -q --spider $url0/${i}.${ext}
+		wget -q --spider $url/${i}.${ext} > /dev/null
 		if [ $? -eq 0 ]; then
+
 			local path=`realpath "${WGPATH}/${i}"`
-			if [ -d "$path" ]; then
-				builtin cd "$path"
-			else
-				mkdir "$path"
-				builtin cd "$path"
-			fi
-			wget $url0/${i}.${ext}
-			extract ${i}.${ext} && rm ${i}.${ext}
+
+			wget $url/${i}.${ext} -P "${path}"
+			tar -xf ${path}/${i}.${ext} -C ${path} && rm ${path}/${i}.${ext}
 				if [ $? -eq 0 ]; then
-					echo -e "[${green}$url0/${i}.${ext}${nc}]	${green}>> ${i}${nc}\n"
+					echo -e "[${green}$url/${i}.${ext}${nc}]	${green}>> ${i}${nc}\n"
 				else
-					echo -e "[${red}$url0/${i}.${ext}${nc}]\n"
+					echo -e "[${red}$url/${i}.${ext}${nc}]\n"
 				fi
 		else
-			echo -e "[${red}$url0/${i}.${ext}${nc}]\n"
+			echo -e "[${red}$url/${i}.${ext}${nc}]\n"
 		fi
 	done
-	builtin cd "$in"
 fi
 }
 
