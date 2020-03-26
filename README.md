@@ -1,5 +1,4 @@
 # Linux workgroup
-Linux workgroup bash skeleton
 
             git clone --recursive https://github.com/nagyg/lnxworkgroup.git ~/workgroup
 
