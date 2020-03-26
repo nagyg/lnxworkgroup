@@ -6,3 +6,7 @@
 	path = sidefx/HSITE/qLib
 	url = https://github.com/qLab/qLib.git
 	branch = master
+[submodule "mtool"]
+	path = mtool
+	url = https://github.com/crmabs/mtool.git
+	branch = master
