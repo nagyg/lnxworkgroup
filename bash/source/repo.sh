@@ -19,7 +19,7 @@ if [ -f "$dir/.repoignore" ]; then
 	if [ $? -eq 0 ]; then
 		echo -e "[${green}${WGPATH}/tmp/${archive}.${ext}${nc}]\n"
 	else
-		echo -e "[${red}${WGPATH}/tmp/${archive}.${ext}${nc}]\n"
+		echo -e "[${red}tar exit [$?] ${WGPATH}/tmp/${archive}.${ext}${nc}]\n"
 	fi
 else
 	echo -e "[${dir}]	>> .repoignore file not found"
@@ -59,10 +59,10 @@ else
 				if [ $? -eq 0 ]; then
 					echo -e "[${green}$url/${i}.${ext}${nc}]	${green}>> ${i}${nc}\n"
 				else
-					echo -e "[${red}$url/${i}.${ext}${nc}]\n"
+					echo -e "[${red}tar exit [$?] $url/${i}.${ext}${nc}]\n"
 				fi
 		else
-			echo -e "[${red}$url/${i}.${ext}${nc}]\n"
+			echo -e "[${red}wget exit [$?] $url/${i}.${ext}${nc}]\n"
 		fi
 	done
 fi
