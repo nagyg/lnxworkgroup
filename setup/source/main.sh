@@ -105,8 +105,8 @@ alias ...='cd ../../'
 #------------------------------------------////
 # HIDDEN SOURCE:
 #------------------------------------------////
-source "${WGPATH}/bash/source/git.sh"
-source "${WGPATH}/bash/source/repo.sh"
+source "${WGPATH}/setup/source/git.sh"
+source "${WGPATH}/setup/source/repo.sh"
 
 #------------------------------------------////
 # INITIAL:

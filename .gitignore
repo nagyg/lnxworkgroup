@@ -5,4 +5,4 @@ tmp
 
 # user .wgsource file
 .wgsource
-!bash/.rcfiles/.wgsource
+!setup/.rcfiles/.wgsource

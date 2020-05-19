@@ -14,8 +14,8 @@ export HDIR="/opt"
 expreditor=false
 
 #------------------------ SOURCE ------------------------////
-source "${WGPATH}/bash/source/main.sh"
-#source "${WGPATH}/bash/source/ffmpeg.sh"
-#source "${WGPATH}/bash/source/arnold.sh"
-#source "${WGPATH}/bash/source/houdini.sh"
-#source "${WGPATH}/bash/source/project.sh"
+source "${WGPATH}/setup/source/main.sh"
+#source "${WGPATH}/setup/source/ffmpeg.sh"
+#source "${WGPATH}/setup/source/arnold.sh"
+#source "${WGPATH}/setup/source/houdini.sh"
+#source "${WGPATH}/setup/source/project.sh"

@@ -124,9 +124,8 @@ source ~/workgroup/.wgsource
 #------------------------------------------////
 # 2 # POST
 #------------------------------------------////
-alias plex='~/App/plex/Plex_Media_Player_2.52.2.1056-29c49026_x64.appimage  2> /dev/null &'
-alias prusa='~/App/prusa/PrusaSlicer-2.1.1+linux64-201912101511.appimage  2> /dev/null &'
-alias winbox='wine ~/App/winbox/winbox64.exe 1> /dev/null &'
+alias plex='~/app/plex/Plex_Media_Player_2.56.0.1071-85947843_x64.AppImage &'
+alias winbox='wine ~/app/mikrotik/winbox64.exe &'
 
 nagyg() {
  ssh gergo@192.168.1.100
